@@ -5,4 +5,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  resources :cats
+  get '/dashboard', to: 'cats#dashboard', as: :dashboard
+  resources :users
 end

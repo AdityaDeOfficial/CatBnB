@@ -22,8 +22,11 @@ class CatsController < ApplicationController
   #save function
   def create
     authorize @cat
-    @cat.save
-    redirect_to cat_path(@cat) #redirect back to #show aka cat id
+    if @cat.save
+      redirect_to cat_path(@cat) #redirect back to #show aka cat id
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -34,6 +37,10 @@ class CatsController < ApplicationController
     redirect_to cat_path(@cat)
   end
 
+  def destroy
+    cat.destroy
+    redirect_to cat_path, status: :see_other
+  end
 
   private
 

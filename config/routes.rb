@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :cats
-  get '/dashboard', to: 'cats#dashboard', as: :dashboard
+  get '/dashboard', to: 'cats#dashboard', as: :cats_dashboard
+
   resources :users
 end

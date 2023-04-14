@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Welcome to the Cat App 🐾</h1> <!-- Add welcome heading -->
+  <br>
+  <div class="add-cat">
+    <%= simple_form_for @cat, url: cats_path do |f| %>
+      <!-- Add form inputs here -->
+      <%= f.input :name %>
+      <%= f.input :gender %>
+      <%= f.input :age %>
+      <%= f.input :breed %>
+      <%= f.input :microchip_number %>
+      <%= f.input :photo_url %>
+      <%= f.input :address %>
+      <%= f.input :color %>
+      <%= f.input :temperament %>
+      <%= f.input :description %>
+      <%= f.submit "Save Cat", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

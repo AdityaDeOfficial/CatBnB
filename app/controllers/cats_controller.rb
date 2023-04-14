@@ -5,6 +5,7 @@ class CatsController < ApplicationController
 
   #list all the cats
   def dashboard
+    @cat = Cat.new
     @cats = policy_scope(Cat)
   end
 
@@ -13,14 +14,15 @@ class CatsController < ApplicationController
     authorize @cat
   end
 
-  #to show the form = jump to the _form.html.erb
+  #to show the form = jump to the new.html.erb
   def new
-    authorize @cat
+    skip_authorization
     @cat = Cat.new
   end
 
   #save function
   def create
+    @cat = Cat.new(cat_params)
     authorize @cat
     if @cat.save
       redirect_to cat_path(@cat) #redirect back to #show aka cat id
@@ -45,7 +47,7 @@ class CatsController < ApplicationController
   private
 
   def cat_params
-    params.require(:cat).permit(:name, :gender,:age, :breed, :microchip_number, :photo_url, :address, :color)
+    params.require(:cat).permit(:name, :gender, :age, :breed, :microchip_number, :photo_url, :address, :color, :temperament, :description)
   end
 
   def set_cat

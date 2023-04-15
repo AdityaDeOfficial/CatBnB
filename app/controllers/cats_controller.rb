@@ -6,6 +6,14 @@ class CatsController < ApplicationController
   #list all the cats
   def dashboard
     @cats = policy_scope(Cat)
+
+    # search = cat_params[:address]
+
+    # if search
+    #     @cats = @cats.select do |cat|
+    #       cat.start_with?
+    #     end
+    # end
   end
 
   #list one cat = id

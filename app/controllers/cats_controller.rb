@@ -5,7 +5,6 @@ class CatsController < ApplicationController
 
   #list all the cats
   def dashboard
-    @cat = Cat.new
     @cats = policy_scope(Cat)
   end
 
@@ -16,13 +15,14 @@ class CatsController < ApplicationController
 
   #to show the form = jump to the new.html.erb
   def new
-    skip_authorization
     @cat = Cat.new
+    authorize @cat
   end
 
   #save function
   def create
     @cat = Cat.new(cat_params)
+    @cat.user = current_user
     authorize @cat
     if @cat.save
       redirect_to cat_path(@cat) #redirect back to #show aka cat id
@@ -40,6 +40,7 @@ class CatsController < ApplicationController
   end
 
   def destroy
+    authorize @cat
     cat.destroy
     redirect_to cat_path, status: :see_other
   end
@@ -52,6 +53,7 @@ class CatsController < ApplicationController
 
   def set_cat
     @cat = Cat.find(params[:id])
+    authorize @cat
   end
 end
 

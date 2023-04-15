@@ -13,7 +13,7 @@ class ApplicationPolicy
   end
 
   def show?
-    false
+    true
   end
 
   def create?
@@ -38,8 +38,8 @@ class ApplicationPolicy
 
   class Scope
     def initialize(user, scope)
-      @user = user
-      @scope = scope
+      @user = user #= user = current_user
+      @scope = scope #
     end
 
     def resolve

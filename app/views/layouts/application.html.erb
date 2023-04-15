@@ -10,10 +10,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="border border-primary">
     <%= render "shared/navbar" %>
     <% if user_signed_in? %>
-      <h2>Hi <%= current_user.email %></h2>
+      <h2 class="border border-primary d-flex justify-content-center">Hi <%= current_user.email %>!</h2>
     <% end %>
     <%=render"shared/flashes" %>
     <%= yield %>

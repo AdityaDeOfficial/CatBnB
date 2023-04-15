@@ -1,0 +1,18 @@
+<div class="p-4 border border-primary">
+  <h3 class="border border-primary"> Here is all the cats on database :D ❤️</h3>
+
+  <form action="cats/index" method="get">
+    <input type="text" name="cat" placeholder="Cats around your address">
+    <input type="submit">
+  </form>
+
+  <div class="masonary">
+    <% @cats.each do |cat| %>
+      <div class="cat-card border border-primary p-0 my-3">
+        <%= image_tag cat.photo_url, alt:"cat pic", height: 300 %>
+        <h3><%= link_to cat.name, cat_path(cat) %></h3>
+        <p>Lives at <%= cat.address %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

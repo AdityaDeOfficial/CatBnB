@@ -4,7 +4,7 @@ class CatsController < ApplicationController
   after_action :verify_policy_scoped, only: :dashboard
 
   #list all the cats
-  def dashboard
+  def index
     @cats = policy_scope(Cat)
   end
 
@@ -38,6 +38,7 @@ class CatsController < ApplicationController
   end
 
   def destroy
+    authorize @cat
     cat.destroy
     redirect_to cat_path, status: :see_other
   end
@@ -45,11 +46,12 @@ class CatsController < ApplicationController
   private
 
   def cat_params
-    params.require(:cat).permit(:name, :gender,:age, :breed, :microchip_number, :photo_url, :address, :color)
+    params.require(:cat).permit(:name, :gender, :age, :breed, :microchip_number, :photo_url, :address, :color)
   end
 
   def set_cat
     @cat = Cat.find(params[:id])
+    authorize @cat
   end
 end
 

@@ -1,0 +1,24 @@
+<h1 class="border border-primary"> <%= @cat.name %></h1>
+
+<p class="border border-primary">My age is: <%= @cat.age %> years old 😺</p>
+<p><%= @cat.gender %></p>
+
+<%= @cat.breed %>
+<%= @cat.temperament %>
+<%= @cat.description %>
+
+<p><%= link_to "Back to see all CATs~", cats_path %></p>
+
+<% if policy(@cat).edit? %>
+  <%= link_to "Edit this cat", edit_cat_path(@cat) %>
+<% end %>
+
+<% if policy(@cat).destroy? %>
+  <%= button_to "Remove this cat from availability", @cat, :delete %>
+<% end %>
+
+<div>
+  <a href="https://flexboxfroggy.com/">
+  <i class="fa-brands fa-twitter"></i>
+  </a>
+</div>

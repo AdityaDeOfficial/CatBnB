@@ -37,4 +37,8 @@ class CatPolicy < ApplicationPolicy
   def destroy
     return true
   end
+
+  def book?
+    return true
+  end
 end

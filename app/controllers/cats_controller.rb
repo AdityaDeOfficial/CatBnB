@@ -55,6 +55,11 @@ class CatsController < ApplicationController
     redirect_to cat_path, status: :see_other
   end
 
+  # def book
+  #   @cat = Cat.find(params[:cat_id])
+  #   @booking = Booking.new(cat: @cat)
+  # end
+
   private
 
   def cat_params

@@ -6,9 +6,12 @@
 <p><%= @cat.gender %></p>
 <p class="border border-primary"><%= image_tag @cat.photo_url, alt:"cat pic", height: 300 %></p>
 
-<%= @cat.breed %>
-<%= @cat.temperament %>
-<%= @cat.description %>
+  <%= @cat.breed %>
+    <br>
+  <%= @cat.temperament %>
+    <br>
+  <%= @cat.description %>
+  <br>
 
 <p><%= link_to "Back to see all CATs~", cats_dashboard_path %></p>
 

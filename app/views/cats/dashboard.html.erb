@@ -17,9 +17,13 @@
     <div class="cards">
       <% @cats.each do |cat| %>
         <div class="cat-card border border-primary my-0 bg-light">
-          <%= image_tag cat.photo_url, alt:"cat pic", height: 100 %>
-          <h5><%= link_to cat.name, cat_path(cat) %></h5>
-          <p>Lives at <%= cat.address %></p>
+          <div>
+            <%= image_tag cat.photo_url, alt:"cat pic", height: 100 %>
+          </div>
+          <div>
+            <h5><%= link_to cat.name, cat_path(cat) %></h5>
+            <p>Lives at <%= cat.address %></p>
+          </div>
         </div>
       <% end %>
     </div>

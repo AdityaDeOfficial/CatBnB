@@ -6,6 +6,13 @@
   margin-top: 0px;
 }
 
+.cat-card {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-content: center;
+}
+
 .main-container {
  display: flex;
 }

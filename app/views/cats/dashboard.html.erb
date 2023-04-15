@@ -13,14 +13,20 @@
     <input type="text" name="cat" placeholder="city">
     <input type="submit">
   </form> %>
+  <div class="main-container border border-primary pt-0 mt-0">
+    <div class="cards">
+      <% @cats.each do |cat| %>
+        <div class="cat-card border border-primary my-0">
+          <%= image_tag cat.photo_url, alt:"cat pic", height: 100 %>
+          <h5><%= link_to cat.name, cat_path(cat) %></h5>
+          <p>Lives at <%= cat.address %></p>
+        </div>
+      <% end %>
+    </div>
 
-  <div class="masonary">
-    <% @cats.each do |cat| %>
-      <div class="cat-card border border-primary p-0 my-3">
-        <%= image_tag cat.photo_url, alt:"cat pic", height: 300 %>
-        <h3><%= link_to cat.name, cat_path(cat) %></h3>
-        <p>Lives at <%= cat.address %></p>
-      </div>
-    <% end %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/assets/cat1.jpg)">
+      <p>I am a Map! if needed (maybe put this in javascript)</p>
+    </div>
+
   </div>
 </div>

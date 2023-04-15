@@ -24,6 +24,9 @@
   %>
 <% end %>
 
+<% if policy(@cat).book? %>
+  <%= link_to "Book this cat", new_cat_booking_path(@cat) %>
+<% end %>
 
 
 <div>

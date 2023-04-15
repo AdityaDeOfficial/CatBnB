@@ -3,6 +3,19 @@ class CatsController < ApplicationController
   skip_after_action :verify_authorized, only: :dashboard
   after_action :verify_policy_scoped, only: :dashboard
 
+  # Passing cats information to array then turn each instance into a geocoded hash(i.e an object)
+  def index
+    @cats = Cat.all
+    @markers = @cats.geocoded.map do |cat|
+      {
+        lat: cat.latitude,
+        lng: cat.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {cat: cat}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
+  end
+
   #list all the cats
   def dashboard
     @cats = policy_scope(Cat)

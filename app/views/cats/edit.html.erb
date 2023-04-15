@@ -1,0 +1,27 @@
+<div class="p-4 border border-primary">
+  <h3 class="border border-primary"> Edit Cat 🐾 </h3>
+  <br>
+  <div class="masonary">
+    <div class="cat-card border border-primary p-0 my-3">
+      <%= image_tag @cat.photo_url, alt: "cat pic", height: 300 %>
+      <h3><%= @cat.name %></h3>
+      <p>Lives at <%= @cat.address %></p>
+    </div>
+  </div>
+<br>
+<div class="masonary">
+    <%= simple_form_for @cat, url: cat_path(@cat), method: :patch do |f| %>
+      <%= f.input :name, value: @cat.name %>
+      <%= f.input :gender, value: @cat.gender %>
+      <%= f.input :age, value: @cat.age %>
+      <%= f.input :breed, value: @cat.breed %>
+      <%= f.input :microchip_number, value: @cat.microchip_number %>
+      <%= f.input :photo_url, value: @cat.photo_url %>
+      <%= f.input :address, value: @cat.address %>
+      <%= f.input :color, value: @cat.color %>
+      <%= f.input :temperament, value: @cat.temperament %>
+      <%= f.input :description, value: @cat.description %>
+      <%= f.submit "Save Cat", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

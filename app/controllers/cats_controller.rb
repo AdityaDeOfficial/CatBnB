@@ -32,10 +32,12 @@ class CatsController < ApplicationController
   end
 
   def edit
+    @cat = Cat.find(params[:id])
+    authorize @cat
   end
 
   def update
-    cat.update(cat_params)
+    @cat.update(cat_params)
     redirect_to cat_path(@cat)
   end
 

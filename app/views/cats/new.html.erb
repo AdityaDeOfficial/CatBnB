@@ -1,9 +1,8 @@
 <div class="container">
-  <h1>Welcome to the Cat App 🐾</h1> <!-- Add welcome heading -->
+  <h1>Add a Cat to the App 🐾</h1>
   <br>
   <div class="add-cat">
     <%= simple_form_for @cat, url: cats_path do |f| %>
-      <!-- Add form inputs here -->
       <%= f.input :name %>
       <%= f.input :gender %>
       <%= f.input :age %>

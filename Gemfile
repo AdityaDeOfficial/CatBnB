@@ -9,6 +9,12 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem "devise"
 gem "faker"
 
+# Handles maps
+gem "geocoder"
+
+# Protects private keys
+gem "dotenv"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

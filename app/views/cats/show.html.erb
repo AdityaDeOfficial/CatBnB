@@ -8,20 +8,21 @@
   </div>
 
   <%# cat name %>
-  <h1 class="border border-primary text-center"> <%= @cat.name %></h1>
+  <h1 class="text-center"> <%= @cat.name %></h1>
 
   <div class="d-flex justify-content-center">
-    <div class="d-flex border border-primary" style="background-image: url(<%= asset_url(@cat.photo_url) %>); background-size: cover; background-position: center; width: 50vw; height: 100%;">
+    <%# cat pic %>
+    <div class="d-flex cat-image" style="background-image: url(<%= asset_url(@cat.photo_url) %>); background-size: cover; background-position: center; height: 50%; width: 500px;" >
       <div class="d-flex flex-column justify-content-around p-3 rounded-4">
         <%# cat age box %>
-        <div class="border border-primary text-center rounded-4 p-1 m-2 text-white" style="background-color:#38652f;">
+        <div class="text-center rounded-4 p-1 m-2 text-white" style="background-color:#38652f;">
           <%= @cat.age %>
           <p>years old</p>
         </div>
 
         <%# cat gender box %>
 
-        <div class="border border-primary text-center rounded-4 p-1 m-2 text-white" style="background-color:#57964a;">
+        <div class="text-center rounded-4 p-1 m-2 text-white" style="background-color:#57964a;">
           <% if @cat.gender == "Female" %>
             <i class="fa-solid fa-venus"></i>
           <% else %>
@@ -31,7 +32,7 @@
         </div>
 
         <%# cat temperment box %>
-        <div class="border border-primary text-center rounded-4 p-1 m-2 text-white" style="background-color:#71c261;">
+        <div class="text-center rounded-4 p-1 m-2 text-white" style="background-color:#71c261;">
           <% if @cat.temperament == "sad" %>
             <i class="fa-solid fa-masks-theater"></i>
           <% else %>
@@ -41,10 +42,6 @@
         </div>
       </div>
 
-      <%# cat pic %>
-      <div>
-        <%# <p class="border border-primary"><%= image_tag @cat.photo_url, alt:"cat pic", height: 300 %></p>
-      </div>
     </div>
   </div>
 
@@ -61,7 +58,7 @@
   <%# booking button %>
   <div class="d-grid">
     <% if policy(@cat).book? %>
-      <%= link_to new_cat_booking_path(@cat), class: "btn btn-primary border border-primary" do %>
+      <%= link_to new_cat_booking_path(@cat), class: "btn btn-primary" do %>
         <i class="fa-solid fa-plus"></i> Book this cat
       <% end %>
     <% end %>

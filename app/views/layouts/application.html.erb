@@ -12,10 +12,10 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
   </head>
 
-  <body class="border border-primary">
+  <body>
     <%= render "shared/navbar" %>
     <% if user_signed_in? %>
-      <h2 class="border border-primary d-flex justify-content-center">Hi <%= current_user.first_name %>!</h2>
+      <h2 class="d-flex justify-content-center">Hi <%= current_user.first_name %>!</h2>
     <% end %>
     <%=render"shared/flashes" %>
     <%= yield %>

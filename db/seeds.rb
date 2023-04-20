@@ -14,7 +14,7 @@
     age: Faker::Creature::Dog.age,
     breed: Faker::Creature::Cat.breed,
     microchip_number: Faker::Number.number(digits: 10),
-    photo_url: "https://loremflickr.com/500/500/cats",
+    photo_url: "https://loremflickr.com/700/700/cats",
     address: Faker::Address.city,
     color: Faker::Color.color_name,
     temperament: ["happy", "sad"].sample,

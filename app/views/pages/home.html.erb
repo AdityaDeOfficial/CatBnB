@@ -7,10 +7,10 @@
 
           <%# cat pic %>
           <div class="d-flex justify-content-center align-items-center my-1 border border-primary">
-            <%= image_tag cat.photo_url, alt: "cat pic", height: "100vh", width: "auto" %>
+            <%= image_tag cat.photo_url, alt: "cat pic", style: "height: 20%;" %>
           </div>
 
-          <div class="d-flex flex-column align-items-center border border-primary">
+          <div class="d-flex flex-column align-items-center border border-primary p-0 m-0>
             <%# cat name %>
             <h5><%= link_to cat.name, cat_path(cat), style: "text-decoration: none; color: black;" %></h5>
             <%# cat address %>

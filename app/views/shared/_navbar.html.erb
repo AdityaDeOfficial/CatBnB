@@ -1,14 +1,18 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 
-  <div class="container-fluid border border-primary">
-    <div>
-      <%= link_to "#", class: "navbar-brand" do %>
-        <div><%= image_tag "CatBnB logo.svg" %></div>
-        <div><h1>CatBnB</h1></div>
+  <div class="container-fluid">
+    <div class="d-flex justify-content-center align-items-center" >
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <div class="d-flex justify-content-center">
+          <div class="d-flex justify-content-center"><%= image_tag "CatBnB logo.svg" %></div>
+          <div>
+            <h2 class="mt-3" style="color: #D2656C;">CatBnB</h2>
+          </div>
+        </div>
       <% end %>
     </div>
-    
-    <button class="navbar-toggler border border-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 

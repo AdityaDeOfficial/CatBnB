@@ -2,8 +2,8 @@
 
 <div class="booking-form-new">
   <%= simple_form_for [@cat, @booking] , url: cat_bookings_path do |f| %>
-  <%= f.input :start_date, label: "Arrival", as: :string, required: false, input_html: {class: "datepicker"} %>
-  <%= f.input :end_date, label: "Departure", as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.input :start_date, label: "I want the cat on...", as: :date, required: false, input_html: {class: "datepicker"} %>
+  <%= f.input :end_date, label: "Cat stays with me till...", as: :date, required: false, input_html: {class: "datepicker"} %>
   <%= f.submit "Book!", class: "btn btn-primary" %>
   <% end %>
 </div>

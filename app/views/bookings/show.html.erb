@@ -1,2 +1,7 @@
 <h1>Yes!!You are booked! 🐾</h1>
-<p>reservation details</p>
+
+<h1>Booking Details</h1>
+
+<p>Cat Name: <%= @cat.name %></p>
+<p>Start Date: <%= @booking.start_date.strftime('%B %e, %Y') %></p>
+<p>End Date: <%= @booking.end_date.strftime('%B %e, %Y') %></p>

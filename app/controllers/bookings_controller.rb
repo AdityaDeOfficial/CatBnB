@@ -7,7 +7,8 @@ class BookingsController < ApplicationController
   end
 
   def show
-    set_booking
+    @cat = Cat.find(params[:cat_id])
+    @booking = Booking.find(params[:id])
     authorize @booking
   end
 
@@ -34,6 +35,9 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    set_booking
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def update

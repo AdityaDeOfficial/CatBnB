@@ -1,40 +1,93 @@
 <div class="p-4">
 
-<h1 class="border border-primary"> <%= @cat.name %></h1>
+  <%# back to home page %>
+  <div>
+    <%= link_to cats_dashboard_path, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" do %>
+      <i class="fa-solid fa-arrow-left"></i>  Back to see all CATs~
+    <% end %>
+  </div>
 
-<p class="border border-primary">My age is: <%= @cat.age %> years old 😺</p>
-<p><%= @cat.gender %></p>
-<p class="border border-primary"><%= image_tag @cat.photo_url, alt:"cat pic", height: 300 %></p>
+  <%# cat name %>
+  <h1 class="border border-primary text-center"> <%= @cat.name %></h1>
 
-  <%= @cat.breed %>
-    <br>
-  <%= @cat.temperament %>
-    <br>
-  <%= @cat.description %>
+  <div class="d-flex justify-content-center">
+    <div class="d-flex border border-primary" style="background-image: url(<%= asset_url(@cat.photo_url) %>); background-size: cover; background-position: center; width: 50vw; height: 100%;">
+      <div class="d-flex flex-column justify-content-around p-3 rounded-4">
+        <%# cat age box %>
+        <div class="border border-primary text-center rounded-4 p-1 m-2 text-white" style="background-color:#38652f;">
+          <%= @cat.age %>
+          <p>years old</p>
+        </div>
+
+        <%# cat gender box %>
+
+        <div class="border border-primary text-center rounded-4 p-1 m-2 text-white" style="background-color:#57964a;">
+          <% if @cat.gender == "Female" %>
+            <i class="fa-solid fa-venus"></i>
+          <% else %>
+            <i class="fa-solid fa-mars"></i>
+          <% end %>
+          <p><%= @cat.gender %></p>
+        </div>
+
+        <%# cat temperment box %>
+        <div class="border border-primary text-center rounded-4 p-1 m-2 text-white" style="background-color:#71c261;">
+          <% if @cat.temperament == "sad" %>
+            <i class="fa-solid fa-masks-theater"></i>
+          <% else %>
+            <i class="fa-solid fa-face-laugh-wink"></i>
+          <% end %>
+          <p><%= @cat.temperament %></p>
+        </div>
+      </div>
+
+      <%# cat pic %>
+      <div>
+        <%# <p class="border border-primary"><%= image_tag @cat.photo_url, alt:"cat pic", height: 300 %></p>
+      </div>
+    </div>
+  </div>
+
+  <%# cat breed %>
+  <h4 class="text-center">Breed: <%= @cat.breed %></h4>
+
+  <%# cat description %>
+  <h4 class="text-center"><%= @cat.description %></h4>
+
+  <%# cat address %>
+  <h4 class="text-center"><%= @cat.address %></h4>
+
+  <br>
+  <%# booking button %>
+  <div class="d-grid">
+    <% if policy(@cat).book? %>
+      <%= link_to new_cat_booking_path(@cat), class: "btn btn-primary border border-primary" do %>
+        <i class="fa-solid fa-plus"></i> Book this cat
+      <% end %>
+    <% end %>
+  </div>
+
   <br>
 
-<p><%= link_to "Back to see all CATs~", cats_dashboard_path %></p>
+  <%# edit this cat %>
+  <% if policy(@cat).edit? %>
+    <%= link_to edit_cat_path(@cat), class: "btn btn-primary" do %>
+      <i class="fas fa-edit"></i> Edit this cat
+    <% end %>
+  <% end %>
 
-<% if policy(@cat).edit? %>
-  <%= link_to "Edit this cat", edit_cat_path(@cat) %>
-<% end %>
+  <%# delete this cat %>
+  <%= link_to cat_path(@cat),
+          method: :delete,
+          data: {turbo_confirm: "Are you sure?"},
+          class: "btn btn-primary" do %>
+      <i class="fas fa-trash"></i> Delete
+    <% end %>
 
-<% if policy(@cat).destroy? %>
-  <%# <%= button_to "Remove this cat from availability", @cat, :delete %>
-  <%= link_to "Delete",
-    cat_path(@cat),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
-<% end %>
-
-<% if policy(@cat).book? %>
-  <%= link_to "Book this cat", new_cat_booking_path(@cat) %>
-<% end %>
-
-
-<div>
-  <a href="https://flexboxfroggy.com/">
-  <i class="fa-brands fa-twitter"></i>
-  </a>
-</div>
+  <%# icons for cats like instagram, twitter, youtube, etc %>
+  <%# <div>
+    <a href="https://flexboxfroggy.com/">
+    <i class="fa-brands fa-twitter"></i>
+    </a>
+  </div> %>
 </div>

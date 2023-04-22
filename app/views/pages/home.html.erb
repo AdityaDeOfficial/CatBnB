@@ -3,7 +3,7 @@
     <div class="cards">
       <% @cats.each do |cat| %>
         <%# card %>
-        <div class="cat-card p-0 my-0 bg-light rounded-4" onclick="location.href='<%= cat_path(cat) %>';" style="cursor:pointer;">
+        <div class="cat-card p-0 my-0 bg-light rounded-4 bg-opacity-75" onclick="location.href='<%= cat_path(cat) %>';" style="cursor:pointer;">
 
           <%# cat pic %>
           <div class="d-flex justify-content-center align-items-center my-1">

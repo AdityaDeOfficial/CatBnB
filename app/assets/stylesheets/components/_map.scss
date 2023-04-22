@@ -9,11 +9,15 @@
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
-  color: rgb(46, 45, 45)
+  color: black;
 }
 
 .clear-popup .mapboxgl-popup-content{
 background-color: transparent;
 border-color: transparent;
 box-shadow: none;
+}
+
+.mapboxgl-marker {
+  background-color: rgba($color: #f4f1f1, $alpha: 0.4)
 }

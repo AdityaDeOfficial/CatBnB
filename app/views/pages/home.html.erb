@@ -1,14 +1,22 @@
- <div class="main-container border border-primary pt-0 mt-0">
+ <div class="main-container pt-0 mt-0 justify-content-around">
+    <%# display all cats %>
     <div class="cards">
       <% @cats.each do |cat| %>
-        <div class="cat-card border border-primary my-0 bg-light">
-          <div>
-            <%= image_tag cat.photo_url, alt:"cat pic", height: 100 %>
+        <%# card %>
+        <div class="cat-card p-0 my-0 bg-light rounded-4" onclick="location.href='<%= cat_path(cat) %>';" style="cursor:pointer;">
+
+          <%# cat pic %>
+          <div class="d-flex justify-content-center align-items-center my-1">
+            <%= image_tag cat.photo_url, alt: "cat pic", height: 100 %>
           </div>
-          <div>
-            <h5><%= link_to cat.name, cat_path(cat) %></h5>
-            <p>Lives at <%= cat.address %></p>
+
+          <div class="d-flex flex-column align-items-center p-0 m-0">
+            <%# cat name %>
+            <h5><%= link_to cat.name, cat_path(cat), style: "text-decoration: none; color: black;" %></h5>
+            <%# cat address %>
+            <p><i class="fa-solid fa-house"></i> <%= cat.address %></p>
           </div>
+
         </div>
       <% end %>
     </div>

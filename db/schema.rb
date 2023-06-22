@@ -15,15 +15,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_015233) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.bigint "cat_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.integer "total_price"
+    t.integer "price"
     t.string "status"
-    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cat_id"], name: "index_bookings_on_cat_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "cats", force: :cascade do |t|
@@ -60,5 +61,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_015233) do
   end
 
   add_foreign_key "bookings", "cats"
+  add_foreign_key "bookings", "users"
   add_foreign_key "cats", "users"
 end

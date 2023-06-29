@@ -54,6 +54,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
@@ -69,6 +70,10 @@ group :development, :test do
   gem "dotenv-rails"
 
 end
+
+#cloudinary
+gem "cloudinary"
+gem "dotenv-rails", groups: [:development, :test] #maybe need or maybe overlap with line 67-72?keep at this moment 22Jun2023-MC
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

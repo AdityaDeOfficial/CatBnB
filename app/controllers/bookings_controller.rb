@@ -35,14 +35,18 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    set_booking
     @booking = Booking.find(params[:id])
+    @cat = Cat.find(params[:cat_id])
     authorize @booking
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    @cat = Cat.find(params[:cat_id])
+    authorize @booking
+
     if @booking.update(booking_params)
-      redirect_to @booking, notice: 'Booking was successfully updated.'
+      redirect_to cats_dashboard_path, notice: 'Booking was successfully updated.'
     else
       render :edit
     end

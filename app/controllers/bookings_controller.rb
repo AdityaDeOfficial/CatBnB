@@ -53,9 +53,17 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking.destroy
-    redirect_to bookings_url, notice: 'Booking was successfully destroyed.'
+    @booking = Booking.find(params[:id])
+    @cat = @booking.cat
+    authorize @booking
+
+    if @booking.destroy
+      redirect_to cats_dashboard_path, notice: 'Booking was successfully deleted.'
+    else
+      redirect_to cats_dashboard_path, alert: 'Failed to delete booking.'
+    end
   end
+
 
   private
 

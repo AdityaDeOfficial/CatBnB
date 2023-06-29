@@ -8,15 +8,20 @@
 
 <h2>Your Reservations</h2>
 <% @bookings.each do |booking| %>
-  <p>Booking ID# <%= booking.id %>, Cat: <%=booking.cat.name %></p>
-  <p>Pickup your Kitty! <%= booking.start_date %>, Kitty return: <%= booking.end_date %></p>
-  <p>Manage booking</p>
+  <div class="booking-item">
+    <p>Booking ID# <%= booking.id %>, Cat: <%= booking.cat.name %></p>
+    <p>Pickup your Kitty! <%= booking.start_date %>, Kitty return: <%= booking.end_date %></p>
 
-    <!-- Update link -->
-  <%= link_to "Update", edit_cat_booking_path(booking.cat, booking) %>
+    <div class="booking-actions">
+      <!-- Update link -->
+      <%= link_to "Update", edit_cat_booking_path(booking.cat, booking), class: "btn btn-primary" %>
 
-  <!-- Destroy link -->
-  <%= link_to "Delete", cat_booking_path(booking.cat, booking), method: :delete, data: { confirm: "Are you sure you want to delete this booking?" } %>
+      <!-- Delete form -->
+      <%= form_with(model: [booking.cat, booking], url: cat_booking_path(booking.cat, booking), method: :delete, local: true) do |form| %>
+        <%= form.submit 'Delete', data: { confirm: 'Are you sure you want to delete this booking?' }, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
 
   <hr>
 <% end %>

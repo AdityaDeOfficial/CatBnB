@@ -10,14 +10,7 @@ class CatsController < ApplicationController
   #list all the cats
   def dashboard
     @cats = policy_scope(Cat)
-
-    # search = cat_params[:address]
-
-    # if search
-    #     @cats = @cats.select do |cat|
-    #       cat.start_with?
-    #     end
-    # end
+    @bookings = current_user.bookings.includes(:cat)
   end
 
   #list one cat = id
@@ -58,11 +51,6 @@ class CatsController < ApplicationController
     cat.destroy
     redirect_to cat_path, status: :see_other
   end
-
-  # def book
-  #   @cat = Cat.find(params[:cat_id])
-  #   @booking = Booking.new(cat: @cat)
-  # end
 
   private
 

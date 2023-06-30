@@ -5,3 +5,23 @@
     <%= link_to "Add a Cat", new_cat_path, class: "btn btn-primary" %>
     <p>testing</p>
 </div>
+
+<h2>Your Reservations</h2>
+<% @bookings.each do |booking| %>
+  <div class="booking-item">
+    <p>Booking ID# <%= booking.id %>, Cat: <%= booking.cat.name %></p>
+    <p>Pickup your Kitty! <%= booking.start_date %>, Kitty return: <%= booking.end_date %></p>
+
+    <div class="booking-actions">
+      <!-- Update link -->
+      <%= link_to "Update", edit_cat_booking_path(booking.cat, booking), class: "btn btn-primary" %>
+
+      <!-- Delete form -->
+      <%= form_with(model: [booking.cat, booking], url: cat_booking_path(booking.cat, booking), method: :delete, local: true) do |form| %>
+        <%= form.submit 'Delete', data: { confirm: 'Are you sure you want to delete this booking?' }, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+
+  <hr>
+<% end %>

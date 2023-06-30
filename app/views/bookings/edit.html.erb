@@ -1,0 +1,21 @@
+<h1>Edit Booking</h1>
+
+<%= form_with(model: [@cat, @booking], url: cat_booking_path(@cat, @booking), method: :patch) do |f| %>
+  <!-- Add form fields for the booking attributes -->
+  <div>
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
+
+  <div>
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date %>
+  </div>
+
+  <div>
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+
+  <%= f.submit "Update Booking" %>
+<% end %>

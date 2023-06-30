@@ -35,23 +35,35 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    set_booking
     @booking = Booking.find(params[:id])
+    @cat = Cat.find(params[:cat_id])
     authorize @booking
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    @cat = Cat.find(params[:cat_id])
+    authorize @booking
+
     if @booking.update(booking_params)
-      redirect_to @booking, notice: 'Booking was successfully updated.'
+      redirect_to cats_dashboard_path, notice: 'Booking was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    @booking.destroy
-    redirect_to bookings_url, notice: 'Booking was successfully destroyed.'
+    @booking = Booking.find(params[:id])
+    @cat = @booking.cat
+    authorize @booking
+
+    if @booking.destroy
+      redirect_to cats_dashboard_path, notice: 'Booking was successfully deleted.'
+    else
+      redirect_to cats_dashboard_path, alert: 'Failed to delete booking.'
+    end
   end
+
 
   private
 

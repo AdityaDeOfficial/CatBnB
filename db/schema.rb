@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_22_102049) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_02_012210) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_102049) do
     t.index ["cat_id"], name: "index_bookings_on_cat_id"
   end
 
+  create_table "cat_reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "content"
+    t.bigint "cat_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cat_id"], name: "index_cat_reviews_on_cat_id"
+  end
+
   create_table "cats", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
@@ -73,6 +82,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_102049) do
     t.index ["user_id"], name: "index_cats_on_user_id"
   end
 
+  create_table "user_reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -90,5 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_102049) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "cats"
+  add_foreign_key "cat_reviews", "cats"
   add_foreign_key "cats", "users"
+  add_foreign_key "user_reviews", "users"
 end

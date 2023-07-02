@@ -4,12 +4,12 @@ Rails.application.routes.draw do
 
   resources :cats do
     resources :bookings
+    resources :cat_reviews, only: [:new, :create]
   end
   get '/dashboard', to: 'cats#dashboard', as: :cats_dashboard
 
   resources :users
 
-  # JS reviews
-  resources :cat_reviews, only: [:new, :create]
+  # JS user reviews. Need to rethink this one a bit later
   resources :user_reviews, only: [:new, :create]
 end

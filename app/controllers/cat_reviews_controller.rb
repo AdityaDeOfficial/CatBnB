@@ -1,6 +1,7 @@
 class CatReviewsController < ApplicationController
   def new
     authorize CatReview
+    @cat = Cat.find(params[:cat_id])
     @cat_review = CatReview.new
   end
 

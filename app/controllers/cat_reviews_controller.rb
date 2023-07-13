@@ -1,4 +1,7 @@
 class CatReviewsController < ApplicationController
+  before_action :set_cat
+  before_action :set_cat_review, only: [:update, :destroy]
+
   def new
     authorize CatReview
     @cat = Cat.find(params[:cat_id])

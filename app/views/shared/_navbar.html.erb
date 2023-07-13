@@ -17,15 +17,39 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
       <ul class="navbar-nav me-auto">
+
+        <%# Dashboard home button %>
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "My Dashboard", cats_dashboard_path, class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to cats_dashboard_path, class: "nav-link" do %>
+            <i class="fa-solid fa-house fa-xl" style="color: #d2646c;"></i>
+            <% end %>
           </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://avatars.githubusercontent.com/u/119086803?v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+
+        <%# Displays username if logged in %>
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Hi #{current_user.first_name}!", "#", class: "nav-link" %>
+              <% end %>
+            </li>
+
+            <li class="nav-item dropdown">
+            <%# user avatar %>
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if current_user.avatar.present? %>
+                <%= cl_image_tag current_user.avatar.key, class: "avatar", alt: "dropdown menu" %>
+              <% else %>
+                <i class="fa-sharp fa-regular fa-circle-user fa-2xl" style="color: #d2646c;"></i>
+              <% end %>
+            </a>
+
+          <%# dropdown menu %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Home", root_path, class: "dropdown-item" %>
+
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
             </div>
           </li>

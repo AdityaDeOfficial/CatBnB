@@ -101,7 +101,7 @@
     <ul class="review-ul">
       <% @cat.cat_reviews.order(created_at: :desc).each do |cat_review| %>
         <li class="review-il">
-          <%= image_tag(cat_review.user.avatar&.url || 'CatBnB logo.svg', alt: "#{cat_review.user.first_name} wrote", style: "width: 2%;", class: "avatar-small") %>
+          <%= image_tag('CatBnB logo.svg', alt: cat_review.user.first_name, style: "width: 2%;", class: "avatar-small") %>
           <span style="font-size: 1.2em; font-weight: bold;"><%= cat_review.user.username %></span> <br>
           <%= cat_review.content %> <br>
           <% (1..cat_review.rating).each do %>★<% end %><% (cat_review.rating+1..5).each do %>☆<% end %>
